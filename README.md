@@ -76,7 +76,17 @@ Asynchronous processing ensures the system handles high traffic without breaking
 - Normal orders → Marked as COMPLETED
 
 ---
+## 🏗 Architecture Diagram
 
+This diagram shows the full event-driven flow of the system:
+
+- Order creation
+- Async processing
+- Failure handling
+- Intelligent routing
+- Observability layer
+
+![AWS Architecture](architecture.png)
 ## 🚨 Failure Handling Strategy
 
 - 1st failure → retry automatically (SQS)
