@@ -34,6 +34,41 @@ This system automatically processes customer orders from creation to completion 
 8. High-value orders are processed separately  
 9. CloudWatch + SNS send alerts for system failures  
 
+This system is designed using real-world distributed systems principles, not just service integration.
+
+Key Design Principles
+
+✔ Loose Coupling
+Services communicate asynchronously via SQS and EventBridge.
+
+✔ Failure Isolation
+Failures are contained using DLQ without affecting system-wide stability.
+
+✔ Event-Driven Processing
+All business logic is triggered by events, not direct calls.
+
+✔ Separation of Concerns
+Each Lambda handles a single responsibility in the pipeline.
+
+✔ Intelligent Routing Layer
+High-value transactions are separated using EventBridge Pipes for priority processing.
+
+✔ Observability by Design
+CloudWatch + SNS provide real-time system health visibility.
+
+🧠 Why this architecture is “production-grade”
+
+Most basic systems only handle:
+
+✔ request → process → response
+
+This system handles:
+
+✔ asynchronous processing
+✔ retries + failure recovery
+✔ dead-letter isolation
+✔ conditional routing
+✔ real-time monitoring
 ---
 
 ## 🧩 AWS Services Used
